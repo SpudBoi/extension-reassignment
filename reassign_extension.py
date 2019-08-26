@@ -527,18 +527,18 @@ time.sleep(5)
 
 #driver.close()
 
-# # celebration
-# root = tkinter.Tk()
-# frames = [tkinter.PhotoImage(file='reassign_extension/dancing.gif',format = 'gif -index %i' %(i)) for i in range(100)]
-#
-# def update(ind):
-#     frame = frames[ind]
-#     ind += 1
-#     label.configure(image=frame)
-#     if ind == 99:
-#         ind = 1
-#     root.after(50, update, ind)
-# label = tkinter.Label(root)
-# label.pack()
-# root.after(0, update, 0)
-# root.mainloop()
+# celebration
+root = tkinter.Tk()
+frames = [tkinter.PhotoImage(file='reassign_extension/dancing.gif',format = 'gif -index %i' %(i)) for i in range(100)]
+
+def update(ind):
+    frame = frames[ind]
+    ind += 1
+    label.configure(image=frame)
+    if ind == 99:
+        ind = 1
+    root.after(50, update, ind)
+label = tkinter.Label(root)
+label.pack()
+root.after(0, update, 0)
+root.mainloop()
