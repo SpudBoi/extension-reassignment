@@ -561,7 +561,7 @@ driver.implicitly_wait(10)
 
 time.sleep(2)
 driver.find_element_by_xpath("/html/body/div[2]/div/div[3]/div[3]/div/div[1]/div[2]/div[1]/div[2]/div/div[1]/button[1]").click()
-user_id = "nettechs"
+
 user_email = user_id + "@pugetsound.edu"
 time.sleep(8)
 email_to = driver.find_element_by_xpath("/html/body/div[2]/div/div[3]/div[3]/div/div[1]/div[2]/div[7]/div/div/div[3]/div[2]/div[1]/div[3]/div[1]/div[2]/div/div/span/div[1]/form/input")
