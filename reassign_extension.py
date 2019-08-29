@@ -1,6 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
+from selenium.webdriver.common.action_chains import ActionChains
 import tkinter
 from playsound import playsound
 import time
@@ -149,6 +150,7 @@ except:
 if result_count > 1:
     raise Exception("There are two staff members with the same name!")
 
+user_id = driver.find_element_by_xpath("//*[@id='contentautoscroll']/form/table[2]/tbody/tr[2]/td[2]/a").text
 #click on the user
 driver.find_element_by_xpath("//*[@id='contentautoscroll']/form/table[2]/tbody/tr[2]/td[2]/a").click()
 
@@ -523,8 +525,36 @@ driver.find_element_by_xpath("//select[@name='cosObjectId']/option[text()='Voice
 
 #saving
 driver.find_element_by_xpath("//*[@id='control-buttons-save']").click()
-time.sleep(5)
+time.sleep(2)
 
+user_menu = driver.find_element_by_xpath("//*[@id='udm']/li[2]/a")
+action = ActionChains(driver)
+action.move_to_element(user_menu).perform()
+time.sleep(1)
+driver.find_element_by_xpath("//*[@id='menu-item-search-external-service-accounts']").click()
+
+driver.find_element_by_xpath("/html/body/div/form/table/tbody/tr[1]/td/button[2]").click()
+driver.find_element_by_xpath("//*[@id='externalServiceObjectId']/option[text()='webmail.pugetsound.edu']").click()
+driver.find_element_by_xpath("//*[@id='actionRadioCorpEmail']").click()
+
+driver.find_element_by_xpath("//*[@id='enableTtsOfEmailCapability']").click()
+driver.find_element_by_xpath("//*[@id='enableCalendarCapability']").click()
+
+driver.find_element_by_xpath("//*[@id='control-buttons-save']").click()
+time.sleep(1)
+
+driver.get("https://webmail.pugetsound.edu")
+
+email_user = driver.find_element_by_xpath("//*[@id='username']")
+email_user.click()
+email_user.clear()
+email_user.send_keys("nettechs")
+
+email_pass = driver.find_element_by_xpath("//*[@id='password']")
+email_pass.click()
+email_pass.clear()
+email_pass.send_keys(password)
+email_pass.send_keys(Keys.RETURN)
 #driver.close()
 
 # celebration
