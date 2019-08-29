@@ -2,6 +2,8 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 import tkinter
 from playsound import playsound
 import time
@@ -555,6 +557,29 @@ email_pass.click()
 email_pass.clear()
 email_pass.send_keys(password)
 email_pass.send_keys(Keys.RETURN)
+driver.implicitly_wait(10)
+
+time.sleep(2)
+driver.find_element_by_xpath("/html/body/div[2]/div/div[3]/div[3]/div/div[1]/div[2]/div[1]/div[2]/div/div[1]/button[1]").click()
+user_id = "nettechs"
+user_email = user_id + "@pugetsound.edu"
+time.sleep(8)
+email_to = driver.find_element_by_xpath("/html/body/div[2]/div/div[3]/div[3]/div/div[1]/div[2]/div[7]/div/div/div[3]/div[2]/div[1]/div[3]/div[1]/div[2]/div/div/span/div[1]/form/input")
+email_to.click()
+email_to.send_keys(user_email)
+
+email_subject = driver.find_element_by_xpath("/html/body/div[2]/div/div[3]/div[3]/div/div[1]/div[2]/div[7]/div/div/div[3]/div[2]/div[1]/div[7]/div/div/input")
+email_subject.click()
+email_subject.send_keys("TICK:")
+
+writeframe = driver.find_element_by_xpath("//*[@id='EditorBody']")
+driver.switch_to.frame(writeframe)
+
+editor = driver.find_element_by_xpath("//*[@id='MicrosoftOWAEditorRegion']")
+editor.send_keys("Hi " + fname + ",\n\n")
+editor.send_keys('''I am contacting you regarding the ticket that was submitted for an extension reassignment. As you requested, extension x''' + extension + ''' has been reassigned to ''' + full_name + '''. We have enabled voicemail-to-email for your account and your voicemail PIN has been set to 1234. You will be prompted to change this when logging in for your first time. If there's anything else you need assistance with, please feel free to contact us!\n\nNettechs\nNetwork Technicians\nTechnology Services, University of Puget Sound\n1500 N. Warner St., Tacoma, WA 98416-1068 \nnettechs@pugetsound.edu\nOffice: Library #027\n(253) 879-2605 - Office''')
+
+
 #driver.close()
 
 # celebration
