@@ -21,7 +21,7 @@ global choice
 #this function assigns the global variables to the info collected by
 #network chan
 def input_info():
-    playsound('reassign_extension/disgust.wav')
+    playsound('C:\\Users\\nettechs\\Desktop\\Code\\reassign_extension\\disgust.wav')
 
     #retrieving and assigning information
     global password
@@ -86,14 +86,14 @@ enter_ext.place(height=20,width=50,x=10,y=260)
 tkinter.Label(window,font = "verdana 10", text = "Ext.", bg = "white").place(x=10,y=235)
 
 #custom button
-hurts = tkinter.PhotoImage(file = "reassign_extension/hurts.png")
+hurts = tkinter.PhotoImage(file = "C:\\Users\\nettechs\\Desktop\\Code\\reassign_extension\\hurts.png")
 tkinter.Button(window, command = input_info, image = hurts, bg = "white").place(height=45, width = 100, x=75, y = 250)
 
 #add in the pictures for the title and greeting anime girl
-icon = tkinter.PhotoImage(file = "reassign_extension/network_chan.png")
+icon = tkinter.PhotoImage(file = "C:\\Users\\nettechs\\Desktop\\Code\\reassign_extension\\network_chan.png")
 tkinter.Label(window, image = icon, bg="white").place(x=175,y=5)
 
-title = tkinter.PhotoImage(file = "reassign_extension/title.png")
+title = tkinter.PhotoImage(file = "C:\\Users\\nettechs\\Desktop\\Code\\reassign_extension\\title.png")
 tkinter.Label(window, image = title, bg = "white").place(x=5,y=0)
 
 window.mainloop()
@@ -210,7 +210,7 @@ if result_count > 1:
                       value = index).pack(anchor=tkinter.W)
 
     #custom button
-    confirm_img = tkinter.PhotoImage(file = "reassign_extension/confirm.png")
+    confirm_img = tkinter.PhotoImage(file = "C:\\Users\\nettechs\\Desktop\\Code\\reassign_extension\\confirm.png")
     confirm_button = tkinter.Button(window, bg = "white", image = confirm_img, command = input_choice)
     confirm_button.place(width = 150, height = 70, x = 50, y = 175)
 
@@ -317,7 +317,7 @@ enter_des.place(height=25,width=250,x=10,y=30)
 tkinter.Label(window,font = "verdana 8", text = "New description:", bg = "white").place(x=10,y=5)
 
 #custom button
-confirm_img = tkinter.PhotoImage(file = "reassign_extension/confirm.png")
+confirm_img = tkinter.PhotoImage(file = "C:\\Users\\nettechs\\Desktop\\Code\\reassign_extension\\confirm.png")
 confirm_button = tkinter.Button(window, bg = "white", image = confirm_img, command = input_description)
 confirm_button.place(width = 150, height = 70, x = 60, y = 75)
 
@@ -509,7 +509,17 @@ web_search_name.send_keys(extension)
 
 driver.find_element_by_xpath("//*[@id='search']").click()
 
-driver.find_element_by_xpath("//*[@id='0']").click()
+import_index = 2
+user_check = ""
+while user_check != user_id:
+    import_index = import_index + 1
+    import_xpath = "/html/body/div/form/table/tbody/tr[" + str(import_index) + "]/td[2]"
+    user_check = driver.find_element_by_xpath(import_xpath).text
+
+id_path = import_index - 3
+select_xpath = "//*[@id='" + str(id_path) + "']"
+
+driver.find_element_by_xpath(select_xpath).click()
 #import new user
 driver.find_element_by_xpath("//*[@id='importUsersButton']").click()
 time.sleep(2)
@@ -543,7 +553,7 @@ driver.find_element_by_xpath("//*[@id='enableTtsOfEmailCapability']").click()
 driver.find_element_by_xpath("//*[@id='enableCalendarCapability']").click()
 
 driver.find_element_by_xpath("//*[@id='control-buttons-save']").click()
-time.sleep(1)
+time.sleep(2)
 
 driver.get("https://webmail.pugetsound.edu")
 
@@ -584,7 +594,7 @@ editor.send_keys('''I am contacting you regarding the ticket that was submitted 
 
 # celebration
 root = tkinter.Tk()
-frames = [tkinter.PhotoImage(file='reassign_extension/dancing.gif',format = 'gif -index %i' %(i)) for i in range(100)]
+frames = [tkinter.PhotoImage(file='C:\\Users\\nettechs\\Desktop\\Code\\reassign_extension\\dancing.gif',format = 'gif -index %i' %(i)) for i in range(100)]
 
 def update(ind):
     frame = frames[ind]
